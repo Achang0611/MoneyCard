@@ -1,0 +1,28 @@
+main: com.vm.plugin.MoneyCardPlugin
+name: ${artifactId}
+version: ${version}
+author: author
+depend:
+  - Vault
+commands:
+  moneycard:
+    description: MoneyCard command
+    usage: Unknown error, Please report issue to BaHaMuTe or github.
+    aliases:
+      - mcard
+permissions:
+  moneycard.cmd.admin:
+    description: 使用管理員選單
+    default: op
+  moneycard.cmd.reload:
+    description: 重啟插件
+    default: op
+  moneycard.cmd.player:
+    description: 使用玩家選單(一般選單)
+    default: true
+  moneycard.use.normal:
+    description: 正常使用金錢卡
+    default: true
+  moneycard.use.shift:
+    description: 蹲下使用金錢卡(一次使用完)
+    default: true

@@ -1,0 +1,2 @@
+# MoneyCard
+ Minecraft plugin

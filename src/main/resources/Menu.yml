@@ -1,0 +1,52 @@
+version: "v1.0"
+
+title:
+  player: "§l金錢卡玩家選單"
+  admin: "§l金錢卡管理員選單"
+
+card:
+  material: "paper"
+  name: "§6§l現金${amount}"
+  lore:
+    - "§9§l點擊右鍵領取,按著Shift一次使用全部"
+    - "§9§l金額:{amount}"
+
+slot1:
+  material: "coal"
+  amount: 10
+  name: "§6§l現金${amount}"
+  lore:
+    - "§a§l點擊我領取{amount}元"
+
+slot2:
+  material: "iron_ingot"
+  amount: 100
+  name: "§6§l現金${amount}"
+  lore:
+    - "§a§l點擊我領取{amount}元"
+
+slot3:
+  material: "gold_ingot"
+  amount: 1000
+  name: "§6§l現金${amount}"
+  lore:
+    - "§a§l點擊我領取{amount}元"
+
+slot4:
+  material: "diamond"
+  amount: 10000
+  name: "§6§l現金${amount}"
+  lore:
+    - "§a§l點擊我領取{amount}元"
+
+slot5:
+  material: "sign"
+  name: "§a§l自定義金錢"
+  lore:
+    - "§a§l點擊我領取自定義金錢"
+
+slot6:
+  material: "bedrock"
+  name: "§a§l給予他人自定義金錢"
+  lore:
+    - "§a§l點擊我給予他人自定義金錢"

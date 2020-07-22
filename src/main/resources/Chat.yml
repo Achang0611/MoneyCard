@@ -1,0 +1,25 @@
+version: "v1.0"
+
+general:
+  Reloaded: "§a§l插件已經重啟"
+  BuyMoney: "§a§l已兌換{few}個{amount}元的金錢卡,總計:{total}"
+  GiveMoney: "§a§l已給予'{player}'{few}個{amount}元的金錢卡,總計:{total}"
+  GiveAllMoney: "§a§l已給予在線玩家{few}個{amount}元的金錢卡,單個總計:{singleTotal}, 總計:{total}"
+  GotMoney: "§a§l{player}給予你{few}個{amount}元的金錢卡,總計:{total}"
+  GetMoney: "§a§l使用金錢卡獲得:{amount}元"
+  HowMuch: "§a§l輸入金額(cancel取消)"
+  HowMany: "§a§l輸入數量(cancel取消)"
+  Who: "§a§l輸入玩家, 輸入all*設定所有在線玩家(cancel取消)"
+  SetAllPlayer: "§a§l已設定在線玩家"
+  Canceled: "§a§l已取消設定狀態"
+
+warning:
+  ExecuteWithoutPlayer: "此指令只能由玩家執行"
+  BuyMoneyFailed: "§e§l你沒有足夠的金額兌換卡"
+  NoPermission: "§e§l你沒有足夠的權限做這件事"
+  NotInt: "§e§l請輸入正整數,或過大(cancel取消)"
+  PlayerNotFound: "§e§l找不到該玩家, 輸入all*設定所有在線玩家(cancel取消)"
+
+error:
+  UnknownCommand: "§c§l未知的指令"
+  GetMoneyFailed: "§c§l轉帳失敗,總額過大"
