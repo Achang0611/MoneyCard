@@ -19,6 +19,7 @@ warning:
   NoPermission: "§e§l你沒有足夠的權限做這件事"
   NotInt: "§e§l請輸入正整數,或過大(cancel取消)"
   PlayerNotFound: "§e§l找不到該玩家, 輸入all*設定所有在線玩家(cancel取消)"
+  FullInventory: "§e§l你的背包已經滿了"
 
 error:
   UnknownCommand: "§c§l未知的指令"
