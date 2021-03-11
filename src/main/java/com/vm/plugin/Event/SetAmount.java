@@ -1,7 +1,7 @@
 package com.vm.plugin.Event;
 
 import com.vm.plugin.Chat.ChatProcessor;
-import com.vm.plugin.Menu.ItemCreator;
+import com.vm.plugin.Menu.ItemFactory;
 import com.vm.plugin.MoneyCardPlugin;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -51,7 +51,7 @@ public class SetAmount implements Listener {
             if (SetPlayer.getTarget().containsKey(p)) {
                 Player target = SetPlayer.getTarget().get(p);
                 if (target != null) {
-                    target.getInventory().addItem(new ItemCreator(plugin).money(money, amount));
+                    target.getInventory().addItem(new ItemFactory(plugin).money(money, amount));
                     p.sendMessage(new ChatProcessor(plugin).giveMoney(p, amount, money));
                     target.sendMessage(new ChatProcessor(plugin).gotMoney(target, amount, money));
                 } else {
@@ -59,19 +59,19 @@ public class SetAmount implements Listener {
                     p.sendMessage(new ChatProcessor(plugin).giveAllMoney(players.size(), amount, money));
                     for (Player player :
                             players) {
-                        player.getInventory().addItem(new ItemCreator(plugin).money(money, amount));
+                        player.getInventory().addItem(new ItemFactory(plugin).money(money, amount));
                         player.sendMessage(new ChatProcessor(plugin).gotMoney(player, amount, money));
                     }
                 }
 
             } else {
                 if (p.hasPermission("moneycard.cmd.admin")) {
-                    p.getInventory().addItem(new ItemCreator(plugin).money(money, amount));
+                    p.getInventory().addItem(new ItemFactory(plugin).money(money, amount));
                     p.sendMessage(new ChatProcessor(plugin).buyMoney(amount, money));
                     cancel(p);
                 } else {
                     if (MoneyCardPlugin.getEcon().withdrawPlayer(p, amount * money).transactionSuccess()) {
-                        p.getInventory().addItem(new ItemCreator(plugin).money(money, amount));
+                        p.getInventory().addItem(new ItemFactory(plugin).money(money, amount));
                     } else {
                         p.sendMessage(plugin.getChat().getString("warning.BuyMoneyFailed"));
                     }

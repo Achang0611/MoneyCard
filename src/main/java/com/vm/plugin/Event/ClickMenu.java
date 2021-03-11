@@ -1,7 +1,7 @@
 package com.vm.plugin.Event;
 
 import com.vm.plugin.Chat.ChatProcessor;
-import com.vm.plugin.Menu.ItemCreator;
+import com.vm.plugin.Menu.ItemFactory;
 import com.vm.plugin.MoneyCardPlugin;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,7 +30,7 @@ public class ClickMenu implements Listener {
         ItemStack item = e.getCurrentItem();
         Player p = ((Player) e.getWhoClicked());
 
-        ArrayList<ItemStack> button = new ItemCreator(plugin).getAllItemList();
+        ArrayList<ItemStack> button = new ItemFactory(plugin).getAllItemList();
 
         if (button.contains(item)) {
             e.setCancelled(true);
@@ -44,24 +44,41 @@ public class ClickMenu implements Listener {
 
         if (title.equals(playerTitle)) {
             if (slot <= 4) {
+                if (isInvFull(p)) {
+                    p.sendMessage(plugin.getChat().getString("warning.FullInventory"));
+                    return;
+                }
+
                 if (MoneyCardPlugin.getEcon()
                         .withdrawPlayer(p, amount)
                         .transactionSuccess()) {
-                    p.getInventory().addItem(new ItemCreator(plugin).getMoney(slot, few));
+                    p.getInventory().addItem(new ItemFactory(plugin).getMoney(slot, few));
                     p.sendMessage(new ChatProcessor(plugin).buyMoney(few, amount));
                 } else {
                     p.sendMessage(plugin.getChat().getString("warning.BuyMoneyFailed"));
                 }
             } else if (slot == 5) {
+                if (isInvFull(p)) {
+                    p.sendMessage(plugin.getChat().getString("warning.FullInventory"));
+                    return;
+                }
                 p.closeInventory();
                 SetMoney.getPlayer().add(p);
                 p.sendMessage(plugin.getChat().getString("general.HowMuch"));
             }
         } else if (title.equals(adminTitle)) {
             if (slot <= 4) {
-                p.getInventory().addItem(new ItemCreator(plugin).getMoney(slot, few));
+                if (isInvFull(p)) {
+                    p.sendMessage(plugin.getChat().getString("warning.FullInventory"));
+                    return;
+                }
+                p.getInventory().addItem(new ItemFactory(plugin).getMoney(slot, few));
                 p.sendMessage(new ChatProcessor(plugin).buyMoney(few, amount));
             } else if (slot == 5) {
+                if (isInvFull(p)) {
+                    p.sendMessage(plugin.getChat().getString("warning.FullInventory"));
+                    return;
+                }
                 p.closeInventory();
                 SetMoney.getPlayer().add(p);
                 p.sendMessage(plugin.getChat().getString("general.HowMuch"));
@@ -73,8 +90,13 @@ public class ClickMenu implements Listener {
         }
     }
 
+    private boolean isInvFull(Player p) {
+        return p.getInventory().firstEmpty() == -1;
+    }
+
     private int getClickSlot(ItemStack item) {
-        ArrayList<ItemStack> button = new ItemCreator(plugin).getAllItemList();
+        ArrayList<ItemStack> button = new ItemFactory(plugin).getAllItemList();
+
         for (int i = 0; i < 6; i++) {
             if (button.get(i).equals(item)) {
                 return i + 1;

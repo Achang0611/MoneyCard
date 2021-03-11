@@ -8,11 +8,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemCreator {
+public class ItemFactory {
 
     private final MoneyCardPlugin plugin;
 
-    public ItemCreator(MoneyCardPlugin plugin) {
+    public ItemFactory(MoneyCardPlugin plugin) {
         this.plugin = plugin;
     }
 

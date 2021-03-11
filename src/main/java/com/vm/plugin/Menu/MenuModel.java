@@ -7,14 +7,14 @@ import org.bukkit.inventory.Inventory;
 public class MenuModel {
 
     private final MoneyCardPlugin plugin;
-    private final ItemCreator creator;
+    private final ItemFactory creator;
     private String title = "ERROR: 錯誤的選單名稱";
     private Inventory inv;
 
 
     public MenuModel(MoneyCardPlugin plugin) {
         this.plugin = plugin;
-        creator = new ItemCreator(plugin);
+        creator = new ItemFactory(plugin);
     }
 
     public void create() {
